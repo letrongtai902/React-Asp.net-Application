@@ -29,34 +29,6 @@ export interface ILoginProps extends FormComponentProps {
 @inject(Stores.AuthenticationStore, Stores.SessionStore, Stores.AccountStore)
 @observer
 class Login extends React.Component<ILoginProps> {
-  changeTenant = async () => {
-    let tenancyName = this.props.form.getFieldValue('tenancyName');
-    const { loginModel } = this.props.authenticationStore!;
-
-    if (!tenancyName) {
-      abp.multiTenancy.setTenantIdCookie(undefined);
-      window.location.href = '/';
-      return;
-    } else {
-      await this.props.accountStore!.isTenantAvailable(tenancyName);
-      const { tenant } = this.props.accountStore!;
-      switch (tenant.state) {
-        case TenantAvailabilityState.Available:
-          abp.multiTenancy.setTenantIdCookie(tenant.tenantId);
-          loginModel.tenancyName = tenancyName;
-          loginModel.toggleShowModal();
-          window.location.href = '/';
-          return;
-        case TenantAvailabilityState.InActive:
-          Modal.error({ title: L('Error'), content: L('TenantIsNotActive') });
-          break;
-        case TenantAvailabilityState.NotFound:
-          Modal.error({ title: L('Error'), content: L('ThereIsNoTenantDefinedWithName{0}', tenancyName) });
-          break;
-      }
-    }
-  };
-
   handleSubmit = async (e: any) => {
     e.preventDefault();
     const { loginModel } = this.props.authenticationStore!;
@@ -69,7 +41,6 @@ class Login extends React.Component<ILoginProps> {
       }
     });
   };
-
   public render() {
     let { from } = this.props.location.state || { from: { pathname: '/' } };
     if (this.props.authenticationStore!.isAuthenticated) return <Redirect to={from} />;
@@ -80,55 +51,9 @@ class Login extends React.Component<ILoginProps> {
       <Col className="name">
         <Form className="" onSubmit={this.handleSubmit}>
           <Row>
-            <Row style={{ marginTop: 100 }}>
+            <Row style={{ marginTop: 200 }}>
               <Col span={8} offset={8}>
-                <Card>
-                  <Row>
-                    {!!this.props.sessionStore!.currentLogin.tenant ? (
-                      <Col span={24} offset={0} style={{ textAlign: 'center' }}>
-                        <Button type="link" onClick={loginModel.toggleShowModal}>
-                          {L('CurrentTenant')} : {this.props.sessionStore!.currentLogin.tenant.tenancyName}
-                        </Button>
-                      </Col>
-                    ) : (
-                      <Col span={24} offset={0} style={{ textAlign: 'center' }}>
-                        <Button type="link" onClick={loginModel.toggleShowModal}>
-                           Click me!!!
-                        </Button>
-                      </Col>
-                    )}
-                  </Row>
-                </Card>
-              </Col>
-            </Row>
-
-            <Row>
-              <Modal
-                visible={loginModel.showModal}
-                onCancel={loginModel.toggleShowModal}
-                onOk={this.changeTenant}
-                title={L('ChangeTenant')}
-                okText={L('OK')}
-                cancelText={L('Cancel')}
-              >
-                <Row>
-                  <Col span={8} offset={8}>
-                    <h3>{L('TenancyName')}</h3>
-                  </Col>
-                  <Col>
-                    <FormItem>
-                      {getFieldDecorator('tenancyName', {})(
-                        <Input placeholder={L('TenancyName')} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" />
-                      )}
-                    </FormItem>
-                    {!getFieldValue('tenancyName') ? <div>{L('LeaveEmptyToSwitchToHost')}</div> : ''}
-                  </Col>
-                </Row>
-              </Modal>
-            </Row>
-            <Row style={{ marginTop: 10 }}>
-              <Col span={8} offset={8}>
-                <Card>
+                <Card style={{ backgroundColor: '#45de6d', width: 300, height: 300 }}>
                   <div style={{ textAlign: 'center' }}>
                     <h3>Phần Mềm Quản Lý</h3>
                   </div>
@@ -137,7 +62,6 @@ class Login extends React.Component<ILoginProps> {
                       <Input placeholder={L('UserNameOrEmail')} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" />
                     )}
                   </FormItem>
-
                   <FormItem>
                     {getFieldDecorator('password', { rules: rules.password })(
                       <Input
@@ -169,5 +93,4 @@ class Login extends React.Component<ILoginProps> {
     );
   }
 }
-
 export default Form.create()(Login);

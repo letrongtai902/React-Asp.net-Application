@@ -12,20 +12,15 @@ import initializeStores from './stores/storeInitializer';
 import registerServiceWorker from './registerServiceWorker';
 
 declare var abp: any;
-
 Utils.setLocalization();
-
-abpUserConfigurationService.getAll().then(data => {
+abpUserConfigurationService.getAll().then((data) => {
   Utils.extend(true, abp, data.data.result);
   abp.clock.provider = Utils.getCurrentClockProvider(data.data.result.clock.provider);
-
   moment.locale(abp.localization.currentLanguage.name);
   if (abp.clock.provider.supportsMultipleTimezone) {
-      moment.tz.setDefault(abp.timing.timeZoneInfo.iana.timeZoneId);
+    moment.tz.setDefault(abp.timing.timeZoneInfo.iana.timeZoneId);
   }
-
   const stores = initializeStores();
-
   ReactDOM.render(
     <Provider {...stores}>
       <BrowserRouter>
@@ -34,6 +29,5 @@ abpUserConfigurationService.getAll().then(data => {
     </Provider>,
     document.getElementById('root') as HTMLElement
   );
-
   registerServiceWorker();
 });

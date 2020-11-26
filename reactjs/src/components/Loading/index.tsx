@@ -6,5 +6,4 @@ const Loading = () => (
     <Spin size="large" />
   </div>
 );
-
 export default Loading;

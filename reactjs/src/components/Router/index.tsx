@@ -8,7 +8,6 @@ import utils from '../../utils/utils';
 const Router = () => {
   const UserLayout = utils.getRoute('/user').component;
   const AppLayout = utils.getRoute('/').component;
-
   return (
     <Switch>
       <Route path="/user" render={(props: any) => <UserLayout {...props} />} />

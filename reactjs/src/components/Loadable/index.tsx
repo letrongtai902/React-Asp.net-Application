@@ -6,5 +6,4 @@ const LoadableComponent = (component: any) =>
     loader: component,
     loading: Loading,
   });
-
 export default LoadableComponent;

@@ -12,7 +12,6 @@ import { L } from '../../lib/abpUtility';
 import { Redirect } from 'react-router-dom';
 import SessionStore from '../../stores/sessionStore';
 import Stores from '../../stores/storeIdentifier';
-import TenantAvailabilityState from '../../services/account/dto/tenantAvailabilityState';
 import rules from './index.validation';
 
 const FormItem = Form.Item;
@@ -53,7 +52,7 @@ class Login extends React.Component<ILoginProps> {
           <Row>
             <Row style={{ marginTop: 200 }}>
               <Col span={8} offset={8}>
-                <Card style={{ backgroundColor: '#45de6d', width: 300, height: 300 }}>
+                <Card style={{ backgroundColor: '#EFFBFB', width: 300, height: 300, borderRadius: '8px', marginLeft:'30%' }}>
                   <div style={{ textAlign: 'center' }}>
                     <h3>Phần Mềm Quản Lý</h3>
                   </div>

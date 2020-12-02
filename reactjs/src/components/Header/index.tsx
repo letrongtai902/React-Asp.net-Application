@@ -12,8 +12,14 @@ export interface IHeaderProps {
 
 const userDropdownMenu = (
   <Menu>
-    <Menu.Item key="2">
-      <Link to="/logout">
+    <Menu.Item key="2" style={{marginTop: '5px'}}>
+      <Link to="/">
+        <Icon type="profile" />
+        <span> {L('My Profile')}</span>
+      </Link>
+    </Menu.Item>
+    <Menu.Item key="2" style={{marginTop: '5px'}}>
+      <Link to="/logout" >
         <Icon type="logout" />
         <span> {L('Logout')}</span>
       </Link>
@@ -24,14 +30,14 @@ const userDropdownMenu = (
 export class Header extends React.Component<IHeaderProps> {
   render() {
     return (
-      <Row className={'header-container'}>
+      <Row className={'header-container'} style={{backgroundColor:'#ECECF8'}}>
         <Col style={{ textAlign: 'left' }} span={12}>
           <Icon className="trigger" type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.props.toggle} />
         </Col>
         <Col style={{ padding: '0px 15px 0px 15px', textAlign: 'right' }} span={12}>
           <Dropdown overlay={userDropdownMenu} trigger={['click']}>
-            <Badge style={{}} count={3}>
-              <Avatar style={{ height: 24, width: 24 }} shape="circle" alt={'profile'} src={profilePicture} />
+            <Badge style={{}} count={0}>
+              <Avatar style={{ height: 50, width: 50 }} shape="circle" alt={'profile'} src={profilePicture} />
             </Badge>
           </Dropdown>
         </Col>

@@ -96,14 +96,14 @@ class CreateOrUpdateUser extends React.Component<ICreateOrUpdateUserProps> {
             <FormItem label={L('Name')} {...formItemLayout}>
               {getFieldDecorator('name', { rules: rules.name })(<Input />)}
             </FormItem>
-            <FormItem label={L('Surname')} {...formItemLayout}>
+            <FormItem label={L('Surname')} {...formItemLayout} style={{}}>
               {getFieldDecorator('surname', { rules: rules.surname })(<Input />)}
             </FormItem>
-            <FormItem label={L('UserName')} {...formItemLayout}>
+            <FormItem label={L('UserName')} {...formItemLayout} style={{}}>
               {getFieldDecorator('userName', { rules: rules.userName })(<Input />)}
               
             </FormItem>
-            <FormItem label={L('Email')} {...formItemLayout}>
+            <FormItem label={L('Email')} {...formItemLayout} style={{}}>
               {getFieldDecorator('emailAddress', { rules: rules.emailAddress })(<Input />)}
             </FormItem>
             {this.props.modalType === 'edit' ? (
@@ -122,7 +122,7 @@ class CreateOrUpdateUser extends React.Component<ICreateOrUpdateUserProps> {
               </FormItem>
             ) : null}
             {this.props.modalType === 'edit' ? (
-              <FormItem label={L('ConfirmPassword')} {...formItemLayout}>
+              <FormItem label={L('Confirm')} {...formItemLayout}>
                 {getFieldDecorator('confirm', {
                   rules: [
                     {

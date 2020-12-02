@@ -143,7 +143,7 @@ class Role extends AppComponentBase<IRoleProps, IRoleState> {
     ];
 
     return (
-      <Card>
+      <Card style={{borderRadius:'8px'}}>
         <Row>
           <Col
             xs={{ span: 4, offset: 0 }}

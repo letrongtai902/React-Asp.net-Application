@@ -20,18 +20,18 @@ export interface ISiderMenuProps {
 const SiderMenu = (props: ISiderMenuProps) => {
   const { collapsed, history, onCollapse } = props;
   return (
-    <Sider trigger={null} className={'sidebar'} width={256} collapsible collapsed={collapsed} onCollapse={onCollapse}>
+    <Sider trigger={null} className={'sidebar'} width={256} collapsible collapsed={collapsed} onCollapse={onCollapse} style = {{backgroundColor:'#1B196F'}}>
       {collapsed ? (
-        <Col style={{ textAlign: 'center', marginTop: 15, marginBottom: 10 }}>
-          <Avatar shape="square" style={{ height: 20, width: 60 }} src={AbpLogo} />
+        <Col style={{ textAlign: 'center', marginTop: 15, marginBottom: 30 }}>
+          <Avatar shape="circle" style={{ height: 60, width: 60 }} src={AbpLogo} />
         </Col>
       ) : (
-        <Col style={{ textAlign: 'center', marginTop: 15, marginBottom: 10 }}>
-          <Avatar shape="square" style={{ height: 40, width: 120 }} src={AbpLogo} />
+        <Col style={{ textAlign: 'center', marginTop: 15, marginBottom: 30 }}>
+          <Avatar shape="circle" style={{ height: 150, width: 150 }} src={AbpLogo} />
         </Col>
       )}
 
-      <Menu theme="dark" mode="inline">
+      <Menu theme="dark" mode="inline" style = {{backgroundColor:'#1B196F'}} >
         {appRouters
           .filter((item: any) => !item.isLayout && item.showInMenu)
           .map((route: any, index: number) => {

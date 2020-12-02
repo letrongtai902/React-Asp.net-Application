@@ -1,4 +1,4 @@
-import * as abpTypings from '../lib/abp';
+import abpTypings from '../lib/abp';
 
 import { L } from '../lib/abpUtility';
 import { routers } from '../components/Router/router.config';

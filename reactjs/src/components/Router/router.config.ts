@@ -75,6 +75,16 @@ export const appRouters: any = [
     showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/Exception')),
   },
+  {
+    path:'/blogs',
+    permission: '',
+    title: 'My Blog',
+    name: 'blog',
+    icon: 'book',
+    showInMenu: true,
+    component: LoadableComponent(()=>import('../../scenes/Blogs')),
+
+  },
 ];
 
 export const routers = [...userRouter, ...appRouters];

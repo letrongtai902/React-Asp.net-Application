@@ -150,7 +150,7 @@ class User extends AppComponentBase<IUserProps, IUserState> {
     ];
 
     return (
-      <Card>
+      <Card style={{borderRadius:'8px'}}>
         <Row>
           <Col
             xs={{ span: 4, offset: 0 }}

@@ -25,9 +25,9 @@
 
 @media (min-width: @screen-md-min) {
   .container {
-    background-image: url('../../images/userLayout-Backround.jpg');
+    background-color: transparent;
     background-repeat: no-repeat;
-    background-position: fixed;
+    background-position: center ;
     background-size: 100%;
   }
 
@@ -68,4 +68,16 @@
   color: @text-color-secondary;
   margin-top: 12px;
   margin-bottom: 40px;
+}
+.ant-col {
+  position: relative;
+  min-height: 1px;
+  max-width: 100%;
+  background-image: url("../../images/background-login-react.jpg");
+}
+.ant-form-item-control {
+  position: relative;
+  line-height: 40px;
+  zoom: 1;
+  background-color: white;
 }

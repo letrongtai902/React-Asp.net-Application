@@ -2,7 +2,7 @@ import './index.less';
 
 import * as React from 'react';
 
-import { Button, Card, Checkbox, Col, Form, Icon, Input, Modal, Row } from 'antd';
+import { Button, Checkbox, Divider, Form, Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 
 import AccountStore from '../../stores/accountStore';
@@ -13,6 +13,7 @@ import { Redirect } from 'react-router-dom';
 import SessionStore from '../../stores/sessionStore';
 import Stores from '../../stores/storeIdentifier';
 import rules from './index.validation';
+import imageFormLogin from '../../images/user.png';
 
 const FormItem = Form.Item;
 declare var abp: any;
@@ -47,48 +48,63 @@ class Login extends React.Component<ILoginProps> {
     const { loginModel } = this.props.authenticationStore!;
     const { getFieldDecorator, getFieldValue } = this.props.form;
     return (
-      <Col className="name">
-        <Form className="" onSubmit={this.handleSubmit}>
-          <Row>
-            <Row style={{ marginTop: 200 }}>
-              <Col span={8} offset={8}>
-                <Card style={{ backgroundColor: '#EFFBFB', width: 300, height: 300, borderRadius: '8px', marginLeft:'30%' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <h3>Phần Mềm Quản Lý</h3>
-                  </div>
-                  <FormItem>
-                    {getFieldDecorator('userNameOrEmailAddress', { rules: rules.userNameOrEmailAddress })(
-                      <Input placeholder={L('UserNameOrEmail')} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" />
-                    )}
-                  </FormItem>
-                  <FormItem>
-                    {getFieldDecorator('password', { rules: rules.password })(
-                      <Input
-                        placeholder={L('Password')}
-                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        type="password"
-                        size="large"
-                      />
-                    )}
-                  </FormItem>
-                  <Row style={{ margin: '0px 0px 10px 15px ' }}>
-                    <Col span={12} offset={0}>
-                      <Checkbox checked={loginModel.rememberMe} onChange={loginModel.toggleRememberMe} style={{ paddingRight: 8 }} />
-                      {L('RememberMe')}
-                    </Col>
+       <div className="container">
+           <div className="row justify-content-center">
+              <div className="col-xl-10 col-lg-12 col-md-9" style={{paddingTop:'5%'}}>
+                  <div className="card o-hidden border-0 shadow-lg my-5"  >
+                      <div className="card-body p-0" >
+                          <div className="row">
+                              <div className="col-lg-6 d-none d-lg-block bg-login-image" style={{backgroundImage:imageFormLogin}}></div>
+                              <div className="col-lg-6">
+                                  <div className="p-5">
+                                      <div className="text-center">
+                                          <h1 className="h4 text-gray-900 mb-4">Chào mừng trở lại!</h1>
+                                      </div>
+                                      <Form className="user" onSubmit={this.handleSubmit}>
+                                          <div className="form-group" >
+                                              <FormItem>
+                                              {getFieldDecorator('userNameOrEmailAddress', { rules: rules.userNameOrEmailAddress })(
+                                                    <Input className="form-control form-control-user"
+                                                        id="exampleInputEmail" aria-describedby="emailHelp"
+                                                        placeholder="Enter Email Address..."
+                                                        />
+                                              )}
+                                              </FormItem>
+                                          </div>
+                                          <div className="form-group">
+                                              <FormItem>
+                                              {getFieldDecorator('password', { rules: rules.password })(
+                                                  <Input type="password" className="form-control form-control-user"
+                                                      id="exampleInputPassword" placeholder="Password"/>
+                                              )}
+                                              </FormItem>
+                                          </div>
+                                          <div className="form-group">
+                                              <div className="custom-control custom-checkbox small">
+                                                  <Checkbox checked={loginModel.rememberMe} onChange={loginModel.toggleRememberMe} style={{ paddingRight: 8 }}  />
+                                                    {L('RememberMe')}
+                                              </div>
+                                          </div>
+                                          <a href="index.html" className="btn btn-primary btn-user btn-block">
+                                              <Button style={{ backgroundColor: 'transparent', color: 'white', borderRadius:'8px',height:'0px', borderColor:'transparent' }} htmlType={'submit'}>
+                                                  Login
+                                              </Button>
+                                          </a>
+                                          
+                                          <Divider> Phương thức đăng nhập khác </Divider>
 
-                    <Col span={8} offset={4}>
-                      <Button style={{ backgroundColor: '#f5222d', color: 'white' }} htmlType={'submit'} type="danger">
-                        {L('LogIn')}
-                      </Button>
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
-            </Row>
-          </Row>
-        </Form>
-      </Col>
+                                          <a href="index.html" className="btn btn-google btn-user btn-block">
+                                              <i className="fab fa-google fa-fw"></i> Login with Google
+                                          </a>
+                                      </Form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+           </div>
     );
   }
 }

@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Redirect, Switch, Route } from 'react-router-dom';
 
 import DocumentTitle from 'react-document-title';
-import Footer from '../../components/Footer';
+
 import Header from '../../components/Header';
 import { Layout } from 'antd';
 import ProtectedRoute from '../../components/Router/ProtectedRoute';
@@ -63,9 +63,6 @@ class AppLayout extends React.Component<any> {
               {pathname !== '/' && <NotFoundRoute />}
             </Switch>
           </Content>
-          <Layout.Footer style={{ textAlign: 'center' }}>
-            <Footer />
-          </Layout.Footer>
         </Layout>
       </Layout>
     );

@@ -30,7 +30,7 @@ const userDropdownMenu = (
 export class Header extends React.Component<IHeaderProps> {
   render() {
     return (
-      <Row className={'header-container'} style={{backgroundColor:'#ECECF8'}}>
+      <Row className={'header-container'} style={{backgroundColor:'#0C1353'}}>
         <Col style={{ textAlign: 'left' }} span={12}>
           <Icon className="trigger" type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.props.toggle} />
         </Col>

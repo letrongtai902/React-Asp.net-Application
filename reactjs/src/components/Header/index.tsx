@@ -12,7 +12,7 @@ export interface IHeaderProps {
 
 const userDropdownMenu = (
   <Menu>
-    <Menu.Item key="2" style={{marginTop: '5px'}}>
+    <Menu.Item key="1" style={{marginTop: '5px'}}>
       <Link to="/">
         <Icon type="profile" />
         <span> {L('My Profile')}</span>

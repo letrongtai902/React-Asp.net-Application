@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function createblog() {
+function createblog() {
     return (
         <div>
             
         </div>
     )
 }
+export default createblog;

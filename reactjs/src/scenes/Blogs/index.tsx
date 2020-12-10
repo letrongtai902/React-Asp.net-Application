@@ -4,7 +4,6 @@ import { L } from '../../lib/abpUtility';
 import Meta from 'antd/lib/card/Meta';
 
 
-
 const data = [
     {
       title: 'Bài viết thứ nhất',
@@ -28,7 +27,7 @@ function blog(props) {
                         xl={{ span: 2, offset: 0 }}
                         xxl={{ span: 2, offset: 0 }}
                     >
-                        <h2>{L('My blog')}</h2>
+                        <h2>{L('Blog')}</h2>
                     </Col>
                     <Col
                         xs={{ span: 14, offset: 0 }}
@@ -55,12 +54,7 @@ function blog(props) {
                                         src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                                     />
                                     }
-                                    actions={[
-                                            // <SettingOutlined key="setting" />,
-                                            // <EditOutlined key="edit" />,
-                                            // <EllipsisOutlined key="ellipsis" />,
-                                            //onclick={handleOnclick},
-                                    ]} onClick={handleOnclick}>
+                                    onClick={handleOnclick}>
                                     <Meta
                                             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                                             title={item.title}
